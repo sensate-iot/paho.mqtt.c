@@ -2286,7 +2286,7 @@ int MQTTAsync_connect(MQTTAsync handle, const MQTTAsync_connectOptions* options)
 			}
 			else
 			{
-				m->c->will->payloadlen = strlen(options->will->message);
+				m->c->will->payloadlen = (int) strlen(options->will->message);
 				source = (void*)options->will->message;
 			}
 			m->c->will->payload = malloc(m->c->will->payloadlen);
@@ -2346,7 +2346,7 @@ int MQTTAsync_connect(MQTTAsync handle, const MQTTAsync_connectOptions* options)
 	m->c->username = options->username;
 	m->c->password = options->password;
 	if (options->password)
-		m->c->passwordlen = strlen(options->password);
+		m->c->passwordlen = (int) strlen(options->password);
 	else if (options->struct_version >= 5 && options->binarypwd.data)
 	{
 		m->c->password = options->binarypwd.data;
