@@ -142,7 +142,7 @@ int loadandcall(char* libname)
 	HMODULE APILibrary;
 
 	mbstowcs(wlibname, libname, strlen(libname) + 1);
-	if ((APILibrary = LoadLibrary(wlibname)) == NULL)
+	if ((APILibrary = LoadLibrary((LPCSTR) wlibname)) == NULL)
 		printf("Error loading library %s, error code %d\n", libname, GetLastError());
 	else
 	{
